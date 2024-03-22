@@ -16,7 +16,7 @@
 		"sourceMap": true,           
 		"declaration": true,     
 		"baseUrl": ".",
-		
+		"types": ["vite/client"],
 		"paths": {
 			"@/*": ["./src/*", "./dist/*", ""],
       	}        

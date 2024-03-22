@@ -6,7 +6,7 @@ import { App } from './App';
 import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <BrowserRouter>
+    <BrowserRouter  basename={import.meta.env.PROD ? '/react-memory-game' : ''}>
         <App />  
     </BrowserRouter>
 );
