@@ -1,1 +1,0 @@
-import{c as a,j as n}from"./index-f81c5f13.js";const l=({className:t,children:o,outline:r=!1,onClick:s})=>{const e=a(`transition-colors duration-300 p-default hover:text-bg hover:bg-text rounded-full ${t}`,{"border border-text":r});return n.jsx("button",{onClick:s,className:e,children:o})};export{l as B};
