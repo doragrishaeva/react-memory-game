@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .back-icon {
+        @apply w-16 h-16 bg-text cursor-pointer hover:animate-wiggle;
+        mask: url('./assets/back.svg');
+        -webkit-mask: url('./assets/back.svg');
+    }
+
+    .text-overflow {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+    .half-translate {
+        translate: -50%;
+    }
+    
+    .scrolled {
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+    
+        &::-webkit-scrollbar-track {
+            @apply bg-transparent border border-solid border-text rounded-lg;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            @apply bg-text rounded-lg;
+        }
+    }
+
+    .game-card {
+        @apply w-full h-[100px] border border-text cursor-pointer bg-no-repeat bg-center rounded-full shadow-[10px_5px_5px_#000000] bg-card transition-transform duration-300;
+        background-size: 70%;
+        background-image: url('./assets/cover.svg');
+        transform: rotateY(360deg);
+    }
+    
+    .game-card__active {
+        @apply transition-transform duration-300;
+        transform: rotateY(180deg);
+        box-shadow: -10px 5px 5px #000000;
+    }
+    
+    .game-card__done {
+        @apply invisible;
+    }
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Indie Flower', 'Amatic SC', cursive !important;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+

@@ -1,0 +1,53 @@
+.game-grid {
+    @apply grid justify-center content-center h-screen w-screen;
+}
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5 {
+    @apply gap-5 auto-rows-100;
+}
+
+.grid-1 {
+    @apply grid-cols-[repeat(4,_100px)] 
+    tablet:grid-cols-[repeat(4,_85px)] tablet:gap-4
+    phone:grid-cols-[repeat(3,_100px)];
+}
+
+.grid-2 {
+    @apply grid-cols-[repeat(6,_100px)] 
+    tablet:grid-cols-[repeat(6,_85px)] tablet:gap-4
+    phone:grid-cols-[repeat(4,_65px)] phone:auto-rows-65;
+
+    .game-card {
+        @apply h-[65px];
+    }
+}
+
+.grid-3 {
+    @apply grid-cols-[repeat(6,_85px)] gap-3 auto-rows-85
+    tablet:grid-cols-[repeat(6,_60px)] tablet:gap-4
+    phone:grid-cols-[repeat(4,_60px)] phone:mt-default phone:gap-3 phone:auto-rows-60;
+    
+    .game-card {
+        @apply h-[85px] tablet:h-[60px] phone:h-[60px];
+    }
+}
+
+.grid-4 {
+    @apply grid-cols-[repeat(8,_85px)] gap-3 auto-rows-85
+    tablet:grid-cols-[repeat(8,_60px)] tablet:gap-4 tablet:auto-rows-60
+    phone:grid-cols-[repeat(4,_60px)] phone:mt-10 phone:gap-3 phone:auto-rows-45;
+    
+    .game-card {
+        @apply h-[85px] tablet:h-[60px] phone:h-[45px];
+    }
+}
+
+.grid-5 {
+    @apply grid-cols-[repeat(10,_85px)] gap-3 auto-rows-85
+    tablet:grid-cols-[repeat(10,_55px)] tablet:gap-4 tablet:auto-rows-55
+    phone:grid-cols-[repeat(6,_40px)] phone:mt-10 phone:gap-3 phone:auto-rows-40;
+
+    .game-card {
+        @apply h-[85px] tablet:h-[55px] phone:h-[40px];
+    }
+}
