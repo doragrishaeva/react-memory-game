@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	base: '',
+	base: '/react-memory-game/',
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url))
