@@ -1,5 +1,5 @@
 export enum LevelRangeSize {
-    Small = 'small',
-    Medium = 'medium',
-    Large = 'large'
-};
+	Small = 'small',
+	Medium = 'medium',
+	Large = 'large'
+}

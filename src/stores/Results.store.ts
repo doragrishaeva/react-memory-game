@@ -3,71 +3,74 @@ import { action, makeObservable, observable } from 'mobx';
 import { IResult, Level, Theme } from '@/models';
 
 export class ResultsStore {
-    @observable
-    results: IResult[] = [];
-    
-    @observable
-    themeFilter: Theme = null;
+	@observable
+	results: IResult[] = [];
 
-    @observable
-    levelFilter: Level = null;
+	@observable
+	themeFilter: Theme = null;
 
-    constructor() {
-        makeObservable(this);
-        this.setLevelFilter = this.setLevelFilter.bind(this);
-        this.setThemeFilter = this.setThemeFilter.bind(this);
-        this.sortResults = this.sortResults.bind(this);
-        this.resetFilters = this.resetFilters.bind(this);
-        this.loadResults();
-    }
+	@observable
+	levelFilter: Level = null;
 
-    @action
-    setResults(results: IResult[]) {
-        
-        this.results = results;
-        localStorage.setItem('results', JSON.stringify(this.results));
-    }
+	constructor() {
+		makeObservable(this);
+		this.setLevelFilter = this.setLevelFilter.bind(this);
+		this.setThemeFilter = this.setThemeFilter.bind(this);
+		this.sortResults = this.sortResults.bind(this);
+		this.resetFilters = this.resetFilters.bind(this);
+		this.loadResults();
+	}
 
-    @action
-    setThemeFilter(theme: Theme) {
-        this.themeFilter = theme;
-    }
+	@action
+	setResults(results: IResult[]) {
+		this.results = results;
+		localStorage.setItem('results', JSON.stringify(this.results));
+	}
 
-    @action
-    setLevelFilter(level: Level) {
-        this.levelFilter = level;
-    }
+	@action
+	setThemeFilter(theme: Theme) {
+		this.themeFilter = theme;
+	}
 
-    loadResults() {
-        const results = localStorage.getItem('results');
-        if (results) this.results = JSON.parse(results);
-    }
+	@action
+	setLevelFilter(level: Level) {
+		this.levelFilter = level;
+	}
 
-    addResult(result: IResult) {
-        const results = [ ...this.results, result ];
-        this.setResults(results);
-    }
+	loadResults() {
+		const results = localStorage.getItem('results');
+		if (results) this.results = JSON.parse(results);
+	}
 
-    sortResults(): IResult[] {
-        let filteredResults = [ ...this.results];
+	addResult(result: IResult) {
+		const results = [...this.results, result];
+		this.setResults(results);
+	}
 
-        if (this.themeFilter !== null) {
-            filteredResults = filteredResults.filter(result => result.theme === this.themeFilter);
-        }
+	sortResults(): IResult[] {
+		let filteredResults = [...this.results];
 
-        if (this.levelFilter !== null) {
-            filteredResults = filteredResults.filter(result => result.level === this.levelFilter);
-        }
+		if (this.themeFilter !== null) {
+			filteredResults = filteredResults.filter(
+				(result) => result.theme === this.themeFilter
+			);
+		}
 
-        filteredResults.sort((a, b) => a.moves - b.moves);
+		if (this.levelFilter !== null) {
+			filteredResults = filteredResults.filter(
+				(result) => result.level === this.levelFilter
+			);
+		}
 
-        return filteredResults;
-    };
+		filteredResults.sort((a, b) => a.moves - b.moves);
 
-    resetFilters() {
-        this.setLevelFilter(null);
-        this.setThemeFilter(null);
-    }
+		return filteredResults;
+	}
+
+	resetFilters() {
+		this.setLevelFilter(null);
+		this.setThemeFilter(null);
+	}
 }
 
 export const resultsStore = new ResultsStore();

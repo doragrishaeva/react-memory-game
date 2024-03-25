@@ -1,5 +1,5 @@
 export interface IMenuItem {
-    title: string;
-    link: string;
-    id: number;
+	title: string;
+	link: string;
+	id: number;
 }

@@ -4,16 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components';
 
 interface IButtonLink {
-    to: string;
-    children: React.ReactNode;
+	to: string;
+	children: React.ReactNode;
 }
 
 export const ButtonLink: React.FC<IButtonLink> = ({ to, children }) => {
-    const navigate = useNavigate();
-  
-    return (
-        <Button onClick={() => navigate(to)}>
-            {children}
-        </Button>
-    );
+	const navigate = useNavigate();
+
+	return <Button onClick={() => navigate(to)}>{children}</Button>;
 };

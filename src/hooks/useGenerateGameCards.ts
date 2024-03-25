@@ -4,31 +4,34 @@ import { CardState, Level, Theme } from '@/models';
 import { CARDS_AMOUNT } from '@/constants';
 
 export const useGenerateGameCards = (level: Level, theme: Theme) => {
-    const cardsData = useMemo(() => {
-        const generatedCards = [];
-        let pairId = 1;
+	const cardsData = useMemo(() => {
+		const generatedCards = [];
+		let pairId = 1;
 
-        const totalCards = CARDS_AMOUNT[level];
-        let isPair = false;
+		const totalCards = CARDS_AMOUNT[level];
+		let isPair = false;
 
-        for (let i = 0; i < totalCards; i++) {
-            let assetPath = new URL(`../assets/game-images/${theme}/${pairId}.svg`, import.meta.url).href;
-            
-            let element = {
-                id: i + 1,
-                pairId,
-                path: assetPath,
-                state: CardState.Initial
-            };
+		for (let i = 0; i < totalCards; i++) {
+			let assetPath = new URL(
+				`../assets/game-images/${theme}/${pairId}.svg`,
+				import.meta.url
+			).href;
 
-            generatedCards.push(element);
+			let element = {
+				id: i + 1,
+				pairId,
+				path: assetPath,
+				state: CardState.Initial
+			};
 
-            if (isPair) pairId++;
-            isPair = !isPair;
-        }
+			generatedCards.push(element);
 
-        return generatedCards.sort(() => Math.random() - 0.5);
-    }, [level, theme]);
+			if (isPair) pairId++;
+			isPair = !isPair;
+		}
 
-    return cardsData;
+		return generatedCards.sort(() => Math.random() - 0.5);
+	}, [level, theme]);
+
+	return cardsData;
 };
